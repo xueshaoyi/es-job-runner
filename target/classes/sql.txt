@@ -1,0 +1,20 @@
+CREATE TABLE `job_init_info` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+  `job_name` varchar(30) NOT NULL DEFAULT '' COMMENT '项目名称',
+  `job_cron` varchar(100) NOT NULL DEFAULT '' COMMENT '任务执行CRON',
+  `executer_class_name` varchar(100) NOT NULL DEFAULT '' COMMENT '执行Job类',
+  `strategy_class` varchar(150) NOT NULL DEFAULT '' COMMENT '分片策略类',
+  `interval_time` int(11) NOT NULL DEFAULT '0' COMMENT '任务执行间隔时间，单位秒',
+  `execute_param` varchar(150) NOT NULL DEFAULT '' COMMENT 'Job执行参数',
+  `trigger_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '调度状态：0-停止，1-运行',
+  `trigger_last_time` bigint(20) NOT NULL DEFAULT '0' COMMENT '上次调度时间',
+  `trigger_next_time` bigint(20) NOT NULL DEFAULT '0' COMMENT '下次调度时间',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `is_delete` tinyint(4) unsigned NOT NULL DEFAULT '0' COMMENT '是否删除',
+  PRIMARY KEY (`id`),
+  KEY `idx_job_name` (`job_name`),
+  KEY `idx_execute_param` (`execute_param`),
+  KEY `idx_create_time` (`create_time`),
+  KEY `idx_update_time` (`update_time`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='分布式job配置表';
