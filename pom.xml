@@ -30,7 +30,7 @@
 		<java.version>11</java.version>
 		<esjob.version>1.0-SNAPSHOT</esjob.version>
 		<mybatis-start.version>2.1.0</mybatis-start.version>
-		<mybatis.version>3.5.2</mybatis.version>
+		<mybatis.version>3.5.6</mybatis.version>
 		<druid.version>1.1.20</druid.version>
 	</properties>
 	<dependencies>
